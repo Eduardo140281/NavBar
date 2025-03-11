@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="assets/css/styles_navBar.css">
+    <link rel="stylesheet" href="grid2.css" />
+
+
+    <title>CSS Grid Template Areas</title>
+    
+  </head>
+
+  <style>
+
+       *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #eeece8;
+            font-family: sans-serif;
+        }
+        .table-container{
+            padding: 0 10%;
+            margin: 40px auto 0;
+        }
+        .heading{
+            font-size: 40px;
+            text-align: center;
+            color: #f1f1f1;
+            margin-bottom: 40px;
+        }
+        .table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table thead {
+            background-color: #289fee;
+        }
+        .table thead tr th{
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.35px;
+            color: #ffffff;
+            opacity: 1;
+            padding: 12px;
+            vertical-align: top;
+            border: 1px solid #39454f;
+        }
+        .table tbody tr td{
+            font-size: 14px;
+            letter-spacing: 0.35px;
+            font-weight: normal;
+            color: #1c53aa;
+            background-color: #d2d7df;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #303b41;
+        }
+        .table .text_open  {
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.35px;
+            color: #289fee;
+        }
+        .table tbody tr td .btn {
+            width: 130px;
+            text-decoration: none;
+            line-height: 35px;
+            display: inline-block;
+            background-color: #289fee;
+            font-weight: medium;
+            color: #ffffff;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            font-size: 14px;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .table thead{
+                display: none;
+            }
+            .table, .table tbody, .table tr, .table td {
+                display: block;
+                width: 100%;
+            }
+            .table tbody tr {
+                margin-bottom: 15px;
+            }
+            .table tbody  tr td{
+                text-align: right;
+                padding-left: 50%;
+                position: relative
+            }
+            .table td:before{
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 15px;
+                font-weight: 600;
+                font-size: 14px;
+                text-align: left;
+            }
+        }
+    
+    
+    
+       </style>
+
+  <body>
+
+    <header class="header">
+        <nav class="nav container">
+           <div class="nav__data">
+              <a href="#" class="nav__logo">
+                <!-- <i class="ri-planet-line"></i> --> LOGO DE KLOWD AQUI
+              </a>
+              
+              <div class="nav__toggle" id="nav-toggle">
+                 <i class="ri-menu-line nav__burger"></i>
+                 <i class="ri-close-line nav__close"></i>
+              </div>
+           </div>
+
+           <!--=============== NAV MENU ===============-->
+           <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                 <li><a href="#" class="nav__link">Home</a></li>
+
+                 <li><a href="#" class="nav__link">Company</a></li>
+
+                 <!--=============== DROPDOWN 1 ===============-->
+                 <li class="dropdown__item">
+                    <div class="nav__link">
+                       Analytics <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <ul class="dropdown__menu">
+                       <li>
+                          <a href="#" class="dropdown__link">
+                             <i class="ri-pie-chart-line"></i> Overview
+                          </a>                          
+                       </li>
+
+                       <li>
+                          <a href="#" class="dropdown__link">
+                             <i class="ri-arrow-up-down-line"></i> Transactions
+                          </a>
+                       </li>
+
+                       <!--=============== DROPDOWN SUBMENU ===============-->
+                       <li class="dropdown__subitem">
+                          <div class="dropdown__link">
+                             <i class="ri-bar-chart-line"></i> Reports <i class="ri-add-line dropdown__add"></i>
+                          </div>
+
+                          <ul class="dropdown__submenu">
+                             <li>
+                                <a href="#" class="dropdown__sublink">
+                                   <i class="ri-file-list-line"></i> Documents
+                                </a>
+                             </li>
+     
+                             <li>
+                                <a href="#" class="dropdown__sublink">
+                                   <i class="ri-cash-line"></i> Payments
+                                </a>
+                             </li>
+     
+                             <li>
+                                <a href="#" class="dropdown__sublink">
+                                   <i class="ri-refund-2-line"></i> Refunds
+                                </a>
+                             </li>
+                          </ul>
+                       </li>
+                    </ul>
+                 </li>
+                 
+                 <li><a href="#" class="nav__link">Products</a></li>
+
+                 <!--=============== DROPDOWN 2 ===============-->
+                 <li class="dropdown__item">
+                    <div class="nav__link">
+                       Users <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <ul class="dropdown__menu">
+                       <li>
+                          <a href="#" class="dropdown__link">
+                             <i class="ri-user-line"></i> Profiles
+                          </a>                          
+                       </li>
+
+                       <li>
+                          <a href="#" class="dropdown__link">
+                             <i class="ri-lock-line"></i> Accounts
+                          </a>
+                       </li>
+
+                       <li>
+                          <a href="#" class="dropdown__link">
+                             <i class="ri-message-3-line"></i> Messages
+                          </a>
+                       </li>
+                    </ul>
+                 </li>
+
+                 <li><a href="#" class="nav__link">Contact</a></li>
+              </ul>
+           </div>
+        </nav>
+     </header>
+
+
+
+    <main>
+      
+       <div class = "table-container">
+        
+         <div class = "heading"><img src="assets/images/k4b300.png" style="height: 45.66px; width: 100px"></div>
+             
+ 
+        <!--  <h1 class="heading">Responsive Table</h1> -->
+ 
+         <table class="table">
+             <thead>
+                 <tr>
+                     <th>Star Data</th>
+                     <th>Star / End</th>
+                     <th>Batch Type</th>
+                     <th>Training Mode</th>
+                     <th>Batch Status</th>
+                     <th>#</th>
+                 </tr>
+             </thead>
+                 <tbody>
+                     <tr>
+                         <td sata-label="Start Date">2 jan 21</td>
+                         <td data-label="Start / End Time">09:00 - 13:00</td>
+                         <td data-label="Batch Type">Weekend</td>
+                         <td data-label="Training Mode">Online Training</td>
+                         <td data-label="Batch Status"><span class ="text_open"> [ Open ] </span></td>
+                         <td data-label="#"><a href="#" class="btn">Enroll Now</a></td>
+                     </tr>
+                     <tr>
+                         <td sata-label="Start Date">1 jan 21</td>
+                         <td data-label="Start / End Time">09:00 - 13:00</td>
+                         <td data-label="Batch Type">Weekend</td>
+                         <td data-label="Training Mode">Online Training</td>
+                         <td data-label="Batch Status"><span class ="text_open"> [ Open ] </span></td>
+                         <td data-label="#"><a href="#" class="btn">Enroll Now</a></td>
+                     </tr>
+                     <tr>
+                         <td sata-label="Start Date">1 jan 21</td>
+                         <td data-label="Start / End Time">09:00 - 13:00</td>
+                         <td data-label="Batch Type">Weekend</td>
+                         <td data-label="Training Mode">Online Training</td>
+                         <td data-label="Batch Status"><span class ="text_open"> [ Open ] </span></td>
+                         <td data-label="#"><a href="#" class="btn">Enroll Now</a></td>
+                     </tr>
+                     <tr>
+                         <td sata-label="Start Date">1 jan 21</td>
+                         <td data-label="Start / End Time">09:00 - 13:00</td>
+                         <td data-label="Batch Type">Weekend</td>
+                         <td data-label="Training Mode">Online Training</td>
+                         <td data-label="Batch Status"><span class ="text_open"> [ Open ] </span></td>
+                         <td data-label="#"><a href="#" class="btn">Enroll Now</a></td>
+                     </tr>
+                 </tbody>
+             
+         </table>
+     </div>
+    
+    
+    </main>
+
+
+
+
+
+    <nav>
+      
+      <P>.</P>
+      <P>.</P>
+      <P>.</P>
+      <P></P>
+
+      <form action="/action_page.php">
+         <label for="fname">First name:</label><br>
+         <input type="text" id="fname" name="fname" value="John"><br>
+         <label for="lname">Last name:</label><br>
+         <input type="text" id="lname" name="lname" value="Doe"><br><br>
+         <input type="submit" value="Submit">
+       </form> 
+
+       <br>
+
+       <label for="language">Tipo de facturas:</label>
+         <select name="Facturas ###" id="language">
+         <option value="factura_01">factura_01</option>  
+         <option value="factura_02">factura_02</option>     
+         <option value="factura_03" disabled>factura_03</option>
+         <option value="factura_04" selected>factura_04</option>
+         </select>
+         <br>
+         <br>    
+
+         <label for="language">Tipo de facturas:</label>
+         <select name="Facturas ###" id="language">
+         <option value="factura_01">factura_01</option>  
+         <option value="factura_02">factura_02</option>     
+         <option value="factura_03" disabled>factura_03</option>
+         <option value="factura_04" selected>factura_04</option>
+         </select>
+         <br>
+         <br>    
+
+         <label for="language">Tipo de facturas:</label>
+         <select name="Facturas ###" id="language">
+         <option value="factura_01">factura_01</option>  
+         <option value="factura_02">factura_02</option>     
+         <option value="factura_03" disabled>factura_03</option>
+         <option value="factura_04" selected>factura_04</option>
+         </select>
+
+         <br>
+         <br>    
+
+         <label for="language">Tipo de facturas:</label>
+         <select name="Facturas ###" id="language">
+         <option value="factura_01">factura_01</option>  
+         <option value="factura_02">factura_02</option>     
+         <option value="factura_03" disabled>factura_03</option>
+         <option value="factura_04" selected>factura_04</option>
+         </select>
+
+    </nav>
+
+
+    <aside>Sidebar_
+
+
+    </aside>
+
+
+    <footer>
+      
+      Footer_
+
+    </footer>
+  </body>
+
+<!--=============== MAIN JS ===============-->
+<script src="assets/js/main_navBar.js"></script>
+
+</html>
